@@ -1,4 +1,3 @@
-# MonoPraksa
 ## First day
 C# example project that includes:
 * inheritance
