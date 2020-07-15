@@ -31,4 +31,4 @@ WebApi:
 Add functions and methods,
 Game class.
 
-*Company: https://mono.software/2018/02/23/c-tips/
+- Company: https://mono.software/
