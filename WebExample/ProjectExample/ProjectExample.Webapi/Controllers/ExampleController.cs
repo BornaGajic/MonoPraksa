@@ -27,8 +27,11 @@ namespace ProjectExample.Webapi.Controllers
         {
             Person p = PersonList.Find(per => per.FirstName == personName);
             
-            if (p == null)
+            if (p is null)
+            {
                 return Request.CreateResponse(HttpStatusCode.NotFound, personName);
+            }
+                
 
             return Request.CreateResponse(HttpStatusCode.OK, p);
         }
