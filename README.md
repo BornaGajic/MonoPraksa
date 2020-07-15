@@ -1,4 +1,3 @@
-Company: https://mono.software/2018/02/23/c-tips/
 ## First day
 C# example project that includes:
 * inheritance
@@ -31,3 +30,5 @@ WebApi:
 ### TO-DO: 
 Add functions and methods,
 Game class.
+
+*Company: https://mono.software/2018/02/23/c-tips/
