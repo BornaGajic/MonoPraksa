@@ -19,6 +19,18 @@ namespace ProjectExample.Webapi.Models
                     "Initial Catalog=MonoPraksa;" +
                     "Integrated Security=True;";
 
+        /*
+            function parameters:
+                query (string)
+                    SQL query in string format.
+                
+                parameters (Dictionary<string, object>) [Optional]
+                    Dicitonary of SQL variables starting with '@', and values associated with them.
+
+            function returns:
+                List<List<object>>
+                    Table with 1:1 relationship with the query result.
+        */
         public static List<List<object>> ExecuteQuery (string query, Dictionary<string, object> parameters = null)
         {
             var result = new List<List<object>>();
@@ -54,6 +66,18 @@ namespace ProjectExample.Webapi.Models
             return result;
         }
 
+        /*
+            function parameters:
+                query (string)
+                    SQL query in string format.
+                
+                parameters (Dictionary<string, object>)
+                    Dicitonary of SQL variables starting with '@', and values associated with them.
+
+            function returns:
+                string
+                    null if no problems were encountered, otherwise returns Exception message.
+        */
         public static string ExeNonQuery (string query, Dictionary<string, object> parameters)
         {
             using (var connection = new SqlConnection(connectionString))
