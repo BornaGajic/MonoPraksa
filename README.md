@@ -21,6 +21,12 @@ WebApi:
 * CRUD methods
 * Postman sending requests
 * DataAnnotations ([FromBody],[HttpPost] etc.)
+## Third day
+* SQL
+* DB relations
+* LINQ
+* ADO.NET
+* Upgrade of code that was written last day
 ### TO-DO: 
 Add functions and methods,
 Game class.
