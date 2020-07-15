@@ -1,3 +1,4 @@
+Company: https://mono.software/2018/02/23/c-tips/
 ## First day
 C# example project that includes:
 * inheritance
