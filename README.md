@@ -27,6 +27,10 @@ WebApi:
 * LINQ
 * ADO.NET
 * Upgrade of code that was written last day
+## Fourth day
+* Multilayer arhitecture
+* Rest and Domain models
+* Automapper
 ### TO-DO: 
 Add functions and methods,
 Game class.
