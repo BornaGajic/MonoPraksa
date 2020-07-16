@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExampleProject.Utility\ProjectExample.Utility.csproj">
+      <Project>{aec2d040-cb7c-4b0f-ab65-6b2f9ff8ff84}</Project>
+      <Name>ProjectExample.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectExample.Model\ProjectExample.Model.csproj">
       <Project>{f93dab7b-5d18-42d4-b0a3-3d90c3af2e4a}</Project>
       <Name>ProjectExample.Model</Name>
@@ -52,10 +56,6 @@
     <ProjectReference Include="..\ProjectExample.Repository.Common\ProjectExample.Repository.Common.csproj">
       <Project>{9673630b-de3e-400f-bf2b-a69e726f791d}</Project>
       <Name>ProjectExample.Repository.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProjectExample.Utility.Common\ProjectExample.Utility.csproj">
-      <Project>{aec2d040-cb7c-4b0f-ab65-6b2f9ff8ff84}</Project>
-      <Name>ProjectExample.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

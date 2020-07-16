@@ -45,7 +45,7 @@
     <Compile Include="CrudWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExampleProject.Utility\ExampleProject.Utility.Common.csproj">
+    <ProjectReference Include="..\ProjectExample.Utility.Common\ExampleProject.Utility.Common.csproj">
       <Project>{6151d8c8-45ae-4edb-ad99-e02b135ab50b}</Project>
       <Name>ExampleProject.Utility.Common</Name>
     </ProjectReference>

@@ -1,0 +1,17 @@
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\bin\Debug\ProjectExample.Utility.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\bin\Debug\ProjectExample.Utility.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\bin\Debug\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ProjectExample.Utility.csprojAssemblyReference.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ProjectExample.Utility.csproj.CoreCompileInputs.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ProjectExample.Utility.csproj.CopyComplete
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ProjectExample.Utility.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ProjectExample.Utility.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ProjectExample.Utility.csprojAssemblyReference.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ProjectExample.Utility.csproj.CoreCompileInputs.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ProjectExample.Utility.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ProjectExample.Utility.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ProjectExample.Utility.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ProjectExample.Utility.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ExampleProject.Utility.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ProjectExample.Utility.csproj.CopyComplete
