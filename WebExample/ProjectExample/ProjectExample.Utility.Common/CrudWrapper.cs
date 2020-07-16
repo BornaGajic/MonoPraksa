@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using ProjectExample.Webapi.Models;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
+using System.Data;
+using System.Data.SqlClient;
+using ProjectExample.Utility.Common;
 
-namespace ProjectExample.Webapi.Models
+namespace ProjectExample.Utility
 {
-    static class MyDatabase
+    public class CrudWrapper : ICrudWrapper
     {
-        public const string connectionString = 
-                    "Data Source=BORNA-PC\\SQLEXPRESS;" +
-                    "Initial Catalog=MonoPraksa;" +
-                    "Integrated Security=True;";
+        public string connectionString { get; }
+        public CrudWrapper (string connString) => connectionString = connString;
 
         /*
             function parameters:
@@ -28,10 +26,10 @@ namespace ProjectExample.Webapi.Models
                     Dicitonary of SQL variables starting with '@', and values associated with them.
 
             function returns:
-                List<List<object>>
-                    Table with 1:1 relationship with the query result.
+                object
+                    Table with 1:1 relationship with the query result (Idealy List<List<object>>).
         */
-        public static List<List<object>> ExecuteQuery (string query, Dictionary<string, object> parameters = null)
+        public List<List<object>> ExecuteQuery (string query, Dictionary<string, object> parameters = null)
         {
             var result = new List<List<object>>();
 
@@ -49,7 +47,15 @@ namespace ProjectExample.Webapi.Models
 
                 connection.Open();
 
-                var reader = command.ExecuteReader();
+                SqlDataReader reader = null;
+                try
+                {
+                    reader = command.ExecuteReader();
+                }
+                catch (Exception _)
+                {
+                    return null;
+                }
 
                 while (reader.Read())
                 {
@@ -78,7 +84,7 @@ namespace ProjectExample.Webapi.Models
                 string
                     null if no problems were encountered, otherwise returns Exception message.
         */
-        public static string ExeNonQuery (string query, Dictionary<string, object> parameters)
+        public string ExeNonQuery (string query, Dictionary<string, object> parameters)
         {
             using (var connection = new SqlConnection(connectionString))
             {

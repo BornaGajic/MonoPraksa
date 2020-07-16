@@ -1,0 +1,5 @@
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.DAL\bin\Debug\ProjectExample.DAL.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.DAL\bin\Debug\ProjectExample.DAL.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.DAL\obj\Debug\ProjectExample.DAL.csproj.CoreCompileInputs.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.DAL\obj\Debug\ProjectExample.DAL.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.DAL\obj\Debug\ProjectExample.DAL.pdb

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ProjectExample.Model.Common;
 
-namespace ProjectExample.Webapi.Models
+namespace ProjectExample.Model
 {
-	public class Job
+	public class Job : IJob
 	{
 		public int JobID { get; }
 		public int Salary { get; set; }

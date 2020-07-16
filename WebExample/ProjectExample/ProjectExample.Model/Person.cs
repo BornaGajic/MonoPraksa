@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ProjectExample.Model.Common;
 
-namespace ProjectExample.Webapi.Models
+namespace ProjectExample.Model
 {
-	 public class Person
+	 public class Person : IPerson
      {
-        public int PersonID { get; }
+        public int PersonID { get; set; }
         public int JobFK { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,0 +1,11 @@
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\bin\Debug\ProjectExample.Repository.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\bin\Debug\ProjectExample.Repository.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\obj\Debug\ProjectExample.Repository.Common.csproj.CoreCompileInputs.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\obj\Debug\ProjectExample.Repository.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\obj\Debug\ProjectExample.Repository.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\obj\Debug\ProjectExample.Repository.Common.csprojAssemblyReference.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\bin\Debug\ProjectExample.Model.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\bin\Debug\ProjectExample.Model.Common.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\bin\Debug\ProjectExample.Model.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\bin\Debug\ProjectExample.Model.Common.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository.Common\obj\Debug\ProjectExample.Repository.Common.csproj.CopyComplete

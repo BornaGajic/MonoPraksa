@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using ProjectExample.Webapi.Models;
+using ProjectExample.Service;
+using ProjectExample.Model;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -17,95 +18,125 @@ namespace ProjectExample.Webapi.Controllers
         [Route("api/Get/PersonList")]
         public HttpResponseMessage GetPersonList ()
         {
-            string selectAll = "SELECT * FROM dbo.Person";
+            Service.Service service = new Service.Service();
 
-            List<Person> result = new List<Person>();
-            var queryResult = MyDatabase.ExecuteQuery(selectAll);
-
-            foreach (List<object> row in queryResult)
-            {
-                result.Add(new Person(row[1].ToString(), row[2].ToString(), (int)row[0], (int)row[3]));
-            }
+            var result = service.GetPersonList();
             
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         [HttpGet]
         [Route("api/Get/Person")]
-        public HttpResponseMessage GetPerson (string personName)
+        public HttpResponseMessage GetPerson (PersonRestModel personRestM)
         {
-            string query = "SELECT * FROM dbo.Person WHERE first_name = @personName;";
+            Service.Service service = new Service.Service();
 
-            var resultQuery = MyDatabase.ExecuteQuery(query, new Dictionary<string, object>(){{"@personName", personName}});
-            var result = new List<Person>();
-
-            foreach (var row in resultQuery)
+            Person person = new Person()
             {
-                result.Add(new Person(row[1].ToString(), row[2].ToString(), (int)row[0], (int)row[3]));
-            }
+                FirstName = personRestM.FirstName,
+                LastName = personRestM.LastName
+            };
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            var result = service.GetPerson(person);
+           
+            return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         [HttpGet]
         [Route("api/Get/PersonAndJobs")]
         public HttpResponseMessage GetPersonJobDetails (int? id = null)
         {   
-            string query = id is null ? "SELECT * FROM dbo.Person AS p JOIN dbo.Job AS j ON p.job_fk = j.job_id;" : 
-                                        "SELECT * FROM dbo.Person AS p JOIN dbo.Job AS j ON p.job_fk = j.job_id WHERE p.person_id = @ID;";
-
-            var parameters = id is null ? null : new Dictionary<string, object>(){{"@ID", id}};
-
-            var result = MyDatabase.ExecuteQuery(query, parameters);
+            Service.Service service = new Service.Service();
             
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            var result = service.GetPersonJobDetails(id);
+            
+            return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         [HttpPost]
         [Route("api/Insert/Construct/Person")]
-        public HttpResponseMessage InsertPerson (string fname, string lname, int id, int jobid)
-        {
-            string query = "INSERT INTO dbo.Person VALUES (@id, @fname, @lname, @jobid)";
+        public HttpResponseMessage InsertPerson (PersonRestModel personRest)
+        {   
+            Service.Service service = new Service.Service();
 
-            var parameters = new Dictionary<string, object>()
+            Person person = null;
+            try
             {
-                {"@id", id},
-                {"@fname", fname},
-                {"@lname", lname},
-                {"@jobid", jobid}
-            };
+                person = new Person ()
+                {
+                    FirstName = personRest.FirstName,
+                    LastName = personRest.LastName,
+                    JobFK = GetJobID(personRest.JobName) ?? throw new Exception("Invalid job.")
+                };            
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
 
-            string result = MyDatabase.ExeNonQuery(query, parameters);
+            var result = service.InsertPerson(person);
 
-            return result is null ? Request.CreateResponse(HttpStatusCode.OK) : Request.CreateResponse(HttpStatusCode.BadRequest, result);
+            return result is null ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
         }
 
         [HttpDelete]
-        [Route("api/Delete/PersonWithID")]
-        public HttpResponseMessage DeletePerson (int ID)
+        [Route("api/Delete/Person")]
+        public HttpResponseMessage DeletePerson (PersonRestModel personRest)
         {
-            string query = "DELETE FROM dbo.Person WHERE person_id = @ID;";
+            Service.Service service = new Service.Service();
 
-            string result = MyDatabase.ExeNonQuery(query, new Dictionary<string, object>(){{"@ID", ID}});
+            Person person = new Person()
+            {
+                FirstName = personRest.FirstName,
+                LastName = personRest.LastName,
+            };
 
-            return result is null ? Request.CreateResponse(HttpStatusCode.OK) : Request.CreateResponse(HttpStatusCode.BadRequest, result);
+            var result = service.DeletePerson(person);
+
+            return result is null ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
         }
 
         [HttpPut]
-        [Route("api/Put/UpdateJobFK")]
-        public IHttpActionResult UpdateJob (int ID, int newFK)
+        [Route("api/Put/UpdateJob")]
+        public IHttpActionResult UpdateJob (PersonRestModel personRest, string newJob)
         {
-           string query = "UPDATE dbo.Person SET job_fk = @newFK WHERE person_id = @ID;";
+           Service.Service service = new Service.Service();
            
-           var parameters = new Dictionary<string, object>()
+           int newJobID = GetJobID(newJob) ?? throw new ArgumentException("Invalid new job.");
+
+           Person person = new Person ()
            {
-                {"@newFK", newFK},
-                {"@ID", ID}
+                FirstName = personRest.FirstName,
+                LastName = personRest.LastName,
+                JobFK = GetJobID(personRest.JobName) ?? throw new ArgumentException("Invalid current job.")
            };
 
-           string result = MyDatabase.ExeNonQuery(query, parameters);
+           var result = service.UpdateJob(person, newJobID);
             
            return result is null ? new MyTextResult("Update successful.", Request) : new MyTextResult(result, Request);
+        }
+
+        [HttpGet]
+        private int? GetJobID (string jobName)
+        {
+            Service.Service service = new Service.Service();
+            
+            return service.GetJobID(jobName); 
+        }
+    }
+
+    public class PersonRestModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string JobName { get; set; }
+
+        public PersonRestModel () {}
+        public PersonRestModel (string fname, string lname, string jobname)
+        {
+            FirstName = fname;
+            LastName = lname;
+            JobName = jobname;
         }
     }
 

@@ -59,7 +59,6 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +88,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Job.cs" />
-    <Compile Include="Models\MyDatabase.cs" />
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +101,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectExample.Model\ProjectExample.Model.csproj">
+      <Project>{f93dab7b-5d18-42d4-b0a3-3d90c3af2e4a}</Project>
+      <Name>ProjectExample.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectExample.Services\ProjectExample.Service.csproj">
+      <Project>{c162d9c5-a281-437e-90d3-d1a5c848e631}</Project>
+      <Name>ProjectExample.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
