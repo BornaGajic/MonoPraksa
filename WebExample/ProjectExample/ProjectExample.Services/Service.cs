@@ -12,63 +12,64 @@ namespace ProjectExample.Service
     public class Service : IService
     {
         private static int nextID = 6;
+        private readonly Repository.Repository repo = new Repository.Repository();
        
-        public List<Person> GetPersonList () 
-        { 
-            Repository.Repository repo = new Repository.Repository();
+        public async Task<List<Person>> GetPersonList () => await repo.GetPersonList();
+        public async Task<List<Person>> GetPerson (Person person) => await repo.GetPerson(person);
+        public async Task<List<List<object>>> GetPersonJobDetails (int? id = null) => await repo.GetPersonJobDetails(id);
 
-            var result = repo.GetPersonList();
-
-            return result;
-        }
-        public List<Person> GetPerson (Person person) 
-        { 
-            Repository.Repository repo = new Repository.Repository();
-
-            var result = repo.GetPerson(person);
-
-            return result;
-        }
-
-        public List<List<object>> GetPersonJobDetails (int? id = null)
+        public async Task<bool> InsertPerson (Person person, string jobName)
         {
-            Repository.Repository repo = new Repository.Repository();
-            
-            return repo.GetPersonJobDetails(id);
-        }
-
-        public string InsertPerson (Person person)
-        {
-            Repository.Repository repo = new Repository.Repository();
+            int? jobFK = null;
+            try
+            {
+                jobFK = await repo.GetJobID(jobName) ?? throw new Exception("Invalid job.");
+            }
+            catch
+            {
+                return false;
+            }
             
             person.PersonID = nextID++;
+            person.JobFK = jobFK.Value;
 
-            return repo.InsertPerson(person);
+            return await repo.InsertPerson(person);
         }
 
-        public int? GetJobID (string jobName)
+        public async Task<bool> DeletePerson (Person person, string jobName = null)
         {
-            Repository.Repository repo = new Repository.Repository();
+            if (jobName == null)
+            {
+                return await repo.DeletePerson(person);
+            }
 
-            return repo.GetJobID(jobName);
+            int? jobFK = null;
+            try
+            {
+                jobFK = await repo.GetJobID(jobName) ?? throw new Exception("Invalid job.");
+            }
+            catch
+            {
+                return false;
+            }
+
+            person.JobFK = jobFK.Value;
+
+            return await repo.DeletePerson(person, true);
         }
 
-        public string DeletePerson (Person person)
+        public async Task<bool> UpdateJob (Person person, string newJob, string currentJob)
         {
-            Repository.Repository repo = new Repository.Repository();
-
-            string result = repo.DeletePerson(person);
-
-            return result;
-        }
-
-        public string UpdateJob (Person person, int jobFK)
-        {
-           Repository.Repository repo = new Repository.Repository();
-
-           string result = repo.UpdateJob(person, jobFK);
-
-           return result;
+           try 
+           {
+                person.JobFK = await repo.GetJobID(newJob) ?? throw new ArgumentException("Invalid new job.");
+           }
+           catch (Exception _)
+           {
+                return false;
+           }
+           
+           return await repo.UpdateJob(person, currentJob);
         }
     }
 }

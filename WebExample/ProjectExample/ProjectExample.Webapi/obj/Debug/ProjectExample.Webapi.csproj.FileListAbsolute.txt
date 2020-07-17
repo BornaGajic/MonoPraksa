@@ -148,3 +148,5 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Webapi\bin\Pro
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Webapi\bin\ExampleProject.Utility.dll
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Webapi\bin\ProjectExample.Utility.Common.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Webapi\bin\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Webapi\bin\AutoMapper.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Webapi\bin\AutoMapper.xml

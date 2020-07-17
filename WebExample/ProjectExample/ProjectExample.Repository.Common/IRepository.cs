@@ -9,12 +9,12 @@ namespace ProjectExample.Repository.Common
 {
 	public interface IRepository
 	{
-		List<Person> GetPersonList ();
-		List<Person> GetPerson (Person person);
-		List<List<object>> GetPersonJobDetails (int? id = null);
-		int? GetJobID (string jobName);
-		string InsertPerson (Person person);
-		string DeletePerson (Person person);
-		string UpdateJob (Person person, int jobFK);
+		Task<List<Person>> GetPersonList ();
+		Task<List<Person>> GetPerson (Person person);
+		Task<List<List<object>>> GetPersonJobDetails (int? id = null);
+		Task<int?> GetJobID (string jobName);
+		Task<bool> InsertPerson (Person person);
+		Task<bool> DeletePerson (Person person, bool isJobSpecified = false);
+		Task<bool> UpdateJob (Person person, string currentJob = null);
 	}
 }

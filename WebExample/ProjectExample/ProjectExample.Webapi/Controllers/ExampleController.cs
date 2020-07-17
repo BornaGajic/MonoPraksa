@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using ProjectExample.Service;
-using ProjectExample.Model;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -10,118 +8,78 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ProjectExample.Service;
+using ProjectExample.Model;
+using ProjectExample.Webapi;
 
 namespace ProjectExample.Webapi.Controllers
 {
     public class ExampleController : ApiController
     {   
-        [Route("api/Get/PersonList")]
-        public HttpResponseMessage GetPersonList ()
-        {
-            Service.Service service = new Service.Service();
+        private readonly Service.Service service = new Service.Service();
 
-            var result = service.GetPersonList();
-            
+        private Mapper mapper = new Mapper(Webapi.WebApiApplication.config);
+
+        [Route("api/Get/PersonList")]
+        public async Task<HttpResponseMessage> GetPersonList ()
+        {
+            var result = await service.GetPersonList();
+  
             return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         [HttpGet]
         [Route("api/Get/Person")]
-        public HttpResponseMessage GetPerson (PersonRestModel personRestM)
+        public async Task<HttpResponseMessage> GetPerson (PersonRestModel personRest)
         {
-            Service.Service service = new Service.Service();
+            Person person = mapper.Map<Person>(personRest);
 
-            Person person = new Person()
-            {
-                FirstName = personRestM.FirstName,
-                LastName = personRestM.LastName
-            };
-
-            var result = service.GetPerson(person);
+            var result = await service.GetPerson(person);
            
             return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         [HttpGet]
         [Route("api/Get/PersonAndJobs")]
-        public HttpResponseMessage GetPersonJobDetails (int? id = null)
+        public async Task<HttpResponseMessage> GetPersonJobDetails (int? id = null)
         {   
-            Service.Service service = new Service.Service();
-            
-            var result = service.GetPersonJobDetails(id);
+            var result = await service.GetPersonJobDetails(id);
             
             return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         [HttpPost]
         [Route("api/Insert/Construct/Person")]
-        public HttpResponseMessage InsertPerson (PersonRestModel personRest)
+        public async Task<HttpResponseMessage> InsertPerson (PersonRestModel personRest)
         {   
-            Service.Service service = new Service.Service();
+            Person person = mapper.Map<Person>(personRest);
+            
+            bool result = personRest.JobName == null ? false : await service.InsertPerson(person, personRest.JobName);
 
-            Person person = null;
-            try
-            {
-                person = new Person ()
-                {
-                    FirstName = personRest.FirstName,
-                    LastName = personRest.LastName,
-                    JobFK = GetJobID(personRest.JobName) ?? throw new Exception("Invalid job.")
-                };            
-            }
-            catch (Exception e)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            var result = service.InsertPerson(person);
-
-            return result is null ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
+            return result == true ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
         }
 
         [HttpDelete]
         [Route("api/Delete/Person")]
-        public HttpResponseMessage DeletePerson (PersonRestModel personRest)
+        public async Task<HttpResponseMessage> DeletePerson (PersonRestModel personRest)
         {
-            Service.Service service = new Service.Service();
+            Person person = mapper.Map<Person>(personRest);
 
-            Person person = new Person()
-            {
-                FirstName = personRest.FirstName,
-                LastName = personRest.LastName,
-            };
+            bool result = personRest.JobName == null ? await service.DeletePerson(person) : await service.DeletePerson(person, personRest.JobName);
 
-            var result = service.DeletePerson(person);
-
-            return result is null ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
+            return result == true ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
         }
 
         [HttpPut]
         [Route("api/Put/UpdateJob")]
-        public IHttpActionResult UpdateJob (PersonRestModel personRest, string newJob)
+        public async Task<HttpResponseMessage> UpdateJob (PersonRestModel personRest, string newJob)
         {
-           Service.Service service = new Service.Service();
-           
-           int newJobID = GetJobID(newJob) ?? throw new ArgumentException("Invalid new job.");
+           Person person = mapper.Map<Person>(personRest);
 
-           Person person = new Person ()
-           {
-                FirstName = personRest.FirstName,
-                LastName = personRest.LastName,
-                JobFK = GetJobID(personRest.JobName) ?? throw new ArgumentException("Invalid current job.")
-           };
-
-           var result = service.UpdateJob(person, newJobID);
+           var result = await service.UpdateJob(person, newJob, personRest.JobName);
             
-           return result is null ? new MyTextResult("Update successful.", Request) : new MyTextResult(result, Request);
-        }
-
-        [HttpGet]
-        private int? GetJobID (string jobName)
-        {
-            Service.Service service = new Service.Service();
-            
-            return service.GetJobID(jobName); 
+           return result == true ? Request.CreateResponse(HttpStatusCode.OK, "Successful.") : Request.CreateResponse(HttpStatusCode.BadRequest, result);
         }
     }
 
@@ -130,13 +88,11 @@ namespace ProjectExample.Webapi.Controllers
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string JobName { get; set; }
-
         public PersonRestModel () {}
-        public PersonRestModel (string fname, string lname, string jobname)
+        public PersonRestModel (string fname, string lname)
         {
             FirstName = fname;
             LastName = lname;
-            JobName = jobname;
         }
     }
 

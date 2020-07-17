@@ -29,7 +29,7 @@ namespace ProjectExample.Utility
                 object
                     Table with 1:1 relationship with the query result (Idealy List<List<object>>).
         */
-        public List<List<object>> ExecuteQuery (string query, Dictionary<string, object> parameters = null)
+        public async Task<List<List<object>>> ExecuteQuery (string query, Dictionary<string, object> parameters = null)
         {
             var result = new List<List<object>>();
 
@@ -81,10 +81,10 @@ namespace ProjectExample.Utility
                     Dicitonary of SQL variables starting with '@', and values associated with them.
 
             function returns:
-                string
-                    null if no problems were encountered, otherwise returns Exception message.
+                bool
+                    false if something isn't working, otherwise returns true
         */
-        public string ExeNonQuery (string query, Dictionary<string, object> parameters)
+        public async Task<bool> ExeNonQuery (string query, Dictionary<string, object> parameters)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -101,13 +101,13 @@ namespace ProjectExample.Utility
 
                     command.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception _)
                 {
-                    return e.Message;   
+                    return false;   
                 }
             }
 
-            return null;
+            return true;
         }
     }
 }

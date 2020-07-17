@@ -4,3 +4,9 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\De
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ExampleProject.Utility.Common.csproj.CoreCompileInputs.cache
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ExampleProject.Utility.dll
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\obj\Debug\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\bin\Debug\ExampleProject.Utility.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\bin\Debug\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ExampleProject.Utility.Common.csprojAssemblyReference.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ExampleProject.Utility.Common.csproj.CoreCompileInputs.cache
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ExampleProject.Utility.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Utility.Common\obj\Debug\ExampleProject.Utility.pdb

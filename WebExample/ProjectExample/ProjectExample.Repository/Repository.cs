@@ -16,16 +16,16 @@ namespace ProjectExample.Repository
 {
     public class Repository : IRepository
     {
-        private static readonly CrudWrapper wrapper = new CrudWrapper(connectionString);
+        private readonly CrudWrapper wrapper = new CrudWrapper(connectionString);
 
         public const string connectionString = "Data Source=BORNA-PC\\SQLEXPRESS;" +
                                             "Initial Catalog=MonoPraksa;" +
                                             "Integrated Security=True;";
-        public List<Person> GetPersonList () 
+        public async Task<List<Person>> GetPersonList () 
         { 
             var query = "SELECT * FROM dbo.Person";
 
-            var resultList = wrapper.ExecuteQuery(query);
+            var resultList = await wrapper.ExecuteQuery(query);
             var result = new List<Person>();
 
             foreach (List<object> row in resultList)
@@ -36,7 +36,7 @@ namespace ProjectExample.Repository
             return result;
         }
 
-        public List<Person> GetPerson (Person person) 
+        public async Task<List<Person>> GetPerson (Person person) 
         { 
             string query = "SELECT * FROM dbo.Person " +
                            "WHERE first_name = @personFName AND last_name = @personLName;";
@@ -47,7 +47,7 @@ namespace ProjectExample.Repository
                 {"@personLName", person.LastName},
             };
 
-            var resultQuery = wrapper.ExecuteQuery(query, parameters);
+            var resultQuery = await wrapper.ExecuteQuery(query, parameters);
 
             var result = new List<Person>();
             foreach (var row in resultQuery)
@@ -58,28 +58,36 @@ namespace ProjectExample.Repository
             return result;
         }
 
-        public List<List<object>> GetPersonJobDetails (int? id = null)
+        public async Task<List<List<object>>> GetPersonJobDetails (int? id = null)
         {
             string query = id is null ? "SELECT * FROM dbo.Person AS p JOIN dbo.Job AS j ON p.job_fk = j.job_id;" : 
                                         "SELECT * FROM dbo.Person AS p JOIN dbo.Job AS j ON p.job_fk = j.job_id WHERE p.person_id = @ID;";
 
-            var parameters = id is null ? null : new Dictionary<string, object>(){{"@ID", id}};
+            var parameters = id is null ? null : new Dictionary<string, object>(){{"@ID", id.Value}};
 
-            return wrapper.ExecuteQuery(query, parameters);
+            return await wrapper.ExecuteQuery(query, parameters);
         }
 
-        public int? GetJobID (string jobName)
+        public async Task<int?> GetJobID (string jobName)
         {
             string query = "SELECT job_id FROM dbo.Job WHERE job_name = @jobName;";
 
             var parameters = new Dictionary<string, object>(){{"@jobName", jobName}};
             
-            var result = wrapper.ExecuteQuery(query, parameters);
+            List<List<object>> result = null;
+            try
+            {
+                result = await wrapper.ExecuteQuery(query, parameters) ?? throw new Exception();
+            }
+            catch (Exception _)
+            {
+                return null;
+            }
             
-            return  result == null ? null : (int?)result[0][0];
+            return (int?)result[0][0];
         }
 
-        public string InsertPerson (Person person)
+        public async Task<bool> InsertPerson (Person person)
         {
             string query = "INSERT INTO dbo.Person VALUES (@id, @fname, @lname, @jobid)";
 
@@ -91,38 +99,54 @@ namespace ProjectExample.Repository
                 {"@jobid", person.JobFK}
             };
             
-            return wrapper.ExeNonQuery(query, parameters);
+            return await wrapper.ExeNonQuery(query, parameters);
         }
 
-        public string DeletePerson (Person person)
+        public async Task<bool> DeletePerson (Person person, bool isJobSpecified = false)
         {
-            string query = "DELETE FROM dbo.Person WHERE first_name = @fname AND last_name = @lname;";
+            string query =  isJobSpecified ? "DELETE FROM dbo.Person WHERE first_name = @fname AND last_name = @lname AND job_fk = @jobfk;" :
+                                             "DELETE FROM dbo.Person WHERE first_name = @fname AND last_name = @lname;";
+            var parameters = isJobSpecified ?
+                new Dictionary<string, object>()
+                {
+                    {"@fname", person.FirstName},
+                    {"@lname", person.LastName},
+                    {"@jobfk", person.JobFK}
+                }
+                :
+                new Dictionary<string, object>()
+                {
+                    {"@fname", person.FirstName},
+                    {"@lname", person.LastName}
+                };
 
-            var parameters = new Dictionary<string, object>()
-            {
-                {"@fname", person.FirstName},
-                {"@lname", person.LastName}
-            };
-
-            string result = wrapper.ExeNonQuery(query, parameters);
-
-            return result;
+            return await wrapper.ExeNonQuery(query, parameters);
         }
 
-        public string UpdateJob (Person person, int jobFK)
+        public async Task<bool> UpdateJob (Person person, string currentJob = null)
         {
-           string query = "UPDATE dbo.Person SET job_fk = @newFK WHERE first_name = @fname AND last_name = @lname;";
+           string query = currentJob == null ? "UPDATE dbo.Person SET job_fk = @newFK WHERE first_name = @fname AND last_name = @lname;" :
+                                               "UPDATE dbo.Person SET job_fk = @newFK WHERE first_name = @fname AND last_name = @lname AND job_fk = @currentJob;";
            
-           var parameters = new Dictionary<string, object>()
-           {
-                {"@newFK", jobFK},
-                {"@fname", person.FirstName},
-                {"@lname", person.LastName}
-           };
+           int? currentJobID = currentJob != null ? await (GetJobID(currentJob) ?? null) : null;
+           
+           var parameters = currentJobID == null ?
+               new Dictionary<string, object>()
+               {
+                    {"@newFK", person.JobFK},
+                    {"@fname", person.FirstName},
+                    {"@lname", person.LastName}
+               } 
+               :
+               new Dictionary<string, object>()
+               {
+                    {"@newFK", person.JobFK},
+                    {"@fname", person.FirstName},
+                    {"@lname", person.LastName},           
+                    {"@currentJob", currentJobID.Value}
+               };
 
-           string result = wrapper.ExeNonQuery(query, parameters);
-
-           return result;
+           return await wrapper.ExeNonQuery(query, parameters);
         }
     }
 }
