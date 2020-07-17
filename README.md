@@ -29,6 +29,10 @@ WebApi:
 * Upgrade of code that was written last day
 ## Fourth day
 * Multilayer arhitecture
+  * WebAPI, starting point - get Rest model from frontend and map it to the domain model.
+  * Service, do important work with the domain model object, pass it to repository.
+  * Repository, do something with the given data on your database.
+  * DAL, entitiy framework.
 * Rest and Domain models
 * Automapper
 ### TO-DO: 
