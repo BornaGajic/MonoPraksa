@@ -1,4 +1,4 @@
-## First day
+## 1st day
 C# example project that includes:
 * inheritance
 * polymorphism
@@ -11,7 +11,7 @@ C# example project that includes:
 * generics
 * SRP and DRY principle
 Composition over inheritance
-## Second day
+## 2nd day
 WebApi:
 * literatura: https://www.tutorialsteacher.com/webapi/what-is-web-api
 * return type: HttpResponseMessage
@@ -21,13 +21,13 @@ WebApi:
 * CRUD methods
 * Postman sending requests
 * DataAnnotations ([FromBody],[HttpPost] etc.)
-## Third day
+## 3rd day
 * SQL
 * DB relations
 * LINQ
 * ADO.NET
 * Upgrade of code that was written last day
-## Fourth day
+## 4th day
 * Multilayer arhitecture
   * WebAPI, starting point - get Rest model from frontend and map it to the domain model.
   * Service, do important work with the domain model object, pass it to repository.
@@ -35,6 +35,8 @@ WebApi:
   * DAL, entitiy framework.
 * Rest and Domain models
 * Automapper
+# 5th day
+* Async and await
 ### TO-DO: 
 Add functions and methods,
 Game class.
