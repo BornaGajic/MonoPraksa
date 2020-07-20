@@ -19,3 +19,6 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\D
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\Debug\ExampleProject.Utility.dll
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\Debug\ProjectExample.Utility.Common.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\Debug\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\Debug\ProjectExample.Services.dll.config
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\Debug\ProjectExample.Repository.dll.config
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Services\bin\Debug\ProjectExample.Utility.Common.dll.config

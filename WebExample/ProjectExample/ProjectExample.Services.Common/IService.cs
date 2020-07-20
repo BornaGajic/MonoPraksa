@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectExample.Model;
+using ProjectExample.Model.Common;
 
 namespace ProjectExample.Service.Common
 {

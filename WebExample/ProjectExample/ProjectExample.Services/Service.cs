@@ -5,15 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectExample.Service.Common;
 using ProjectExample.Model;
+using ProjectExample.Model.Common;
 using ProjectExample.Repository;
+using ProjectExample.Repository.Common;
 
 namespace ProjectExample.Service
 {
     public class Service : IService
     {
         private static int nextID = 6;
-        private readonly Repository.Repository repo = new Repository.Repository();
-       
+        private readonly IRepository repo;
+
+        public Service (IRepository repo) => this.repo = repo;
+
         public async Task<List<Person>> GetPersonList () => await repo.GetPersonList();
         public async Task<List<Person>> GetPerson (Person person) => await repo.GetPerson(person);
         public async Task<List<List<object>>> GetPersonJobDetails (int? id = null) => await repo.GetPersonJobDetails(id);

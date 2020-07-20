@@ -15,3 +15,5 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ProjectExample.Utility.Common.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ProjectExample.Model.Common.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ExampleProject.Utility.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ProjectExample.Repository.dll.config
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ProjectExample.Utility.Common.dll.config

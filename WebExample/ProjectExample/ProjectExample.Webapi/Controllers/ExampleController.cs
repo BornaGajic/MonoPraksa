@@ -9,23 +9,29 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using ProjectExample.Webapi.Controllers;
 using ProjectExample.Service;
+using ProjectExample.Service.Common;
 using ProjectExample.Model;
+using ProjectExample.Model.Common;
 using ProjectExample.Webapi;
+using Autofac;
 
 namespace ProjectExample.Webapi.Controllers
 {
     public class ExampleController : ApiController
     {   
-        private readonly Service.Service service = new Service.Service();
+        private readonly IService service;
 
-        private Mapper mapper = new Mapper(Webapi.WebApiApplication.config);
+        private readonly Mapper mapper = new Mapper(Webapi.WebApiApplication.config);
 
+        public ExampleController (IService service) => this.service = service;
+        
         [Route("api/Get/PersonList")]
         public async Task<HttpResponseMessage> GetPersonList ()
         {
             var result = await service.GetPersonList();
-  
+
             return result is null ? Request.CreateResponse(HttpStatusCode.NoContent, result) : Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
@@ -93,29 +99,6 @@ namespace ProjectExample.Webapi.Controllers
         {
             FirstName = fname;
             LastName = lname;
-        }
-    }
-
-    public class MyTextResult : IHttpActionResult
-    {
-        string _value;
-        HttpRequestMessage _request;
-
-        public MyTextResult (string value, HttpRequestMessage request)
-        {
-            _value = value;
-            _request = request;
-        }
-
-        public Task<HttpResponseMessage> ExecuteAsync (CancellationToken cancellationToken)
-        {
-            var response = new HttpResponseMessage()
-            {
-                Content = new StringContent(_value),
-                RequestMessage = _request
-            };
-
-            return Task.FromResult(response);
         }
     }
 }
