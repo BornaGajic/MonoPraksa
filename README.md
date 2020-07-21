@@ -35,10 +35,13 @@ WebApi:
   * DAL, entitiy framework.
 * Rest and Domain models
 * Automapper
-# 5th day
+## 5th day
 * Async and await
-### TO-DO: 
-Add functions and methods,
-Game class.
+## 6th day
+* Dependency Injection
+* IoC
+* Autofac
+## 7th day
+* DI Modules
 
 *Company: https://mono.software/*
