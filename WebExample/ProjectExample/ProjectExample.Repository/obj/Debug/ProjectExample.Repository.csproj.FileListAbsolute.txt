@@ -17,3 +17,17 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ExampleProject.Utility.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ProjectExample.Repository.dll.config
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\ProjectExample.Utility.Common.dll.config
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Autofac.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Autofac.Extensions.DependencyInjection.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Autofac.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Autofac.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Autofac.Extensions.DependencyInjection.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Autofac.Extensions.DependencyInjection.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Repository\bin\Debug\System.Threading.Tasks.Extensions.xml

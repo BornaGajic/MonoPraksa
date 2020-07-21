@@ -14,7 +14,8 @@ namespace ProjectExample.Utility
 {
     public class CrudWrapper : ICrudWrapper
     {
-        public string connectionString { get; }
+        private string connectionString { get; }
+
         public CrudWrapper (string connString) => connectionString = connString;
 
         /*
@@ -50,7 +51,7 @@ namespace ProjectExample.Utility
                 SqlDataReader reader = null;
                 try
                 {
-                    reader = command.ExecuteReader();
+                    reader = await Task.Run(() => command.ExecuteReader()); 
                 }
                 catch (Exception _)
                 {
@@ -99,7 +100,7 @@ namespace ProjectExample.Utility
                         command.Parameters.AddWithValue(param.Key, param.Value);
                     }
 
-                    command.ExecuteNonQuery();
+                    await Task.Run(() => command.ExecuteNonQuery());
                 }
                 catch (Exception _)
                 {

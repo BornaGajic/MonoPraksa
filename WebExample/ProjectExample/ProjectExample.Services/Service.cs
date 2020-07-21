@@ -13,13 +13,16 @@ namespace ProjectExample.Service
 {
     public class Service : IService
     {
-        private static int nextID = 6;
+        private static int nextID = 6; // just an example, would call GetLastID
+
         private readonly IRepository repo;
 
         public Service (IRepository repo) => this.repo = repo;
 
         public async Task<List<Person>> GetPersonList () => await repo.GetPersonList();
+
         public async Task<List<Person>> GetPerson (Person person) => await repo.GetPerson(person);
+
         public async Task<List<List<object>>> GetPersonJobDetails (int? id = null) => await repo.GetPersonJobDetails(id);
 
         public async Task<bool> InsertPerson (Person person, string jobName)

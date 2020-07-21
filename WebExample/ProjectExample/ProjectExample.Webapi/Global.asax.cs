@@ -11,7 +11,10 @@ using AutoMapper.Configuration;
 using Autofac.Integration.WebApi;
 using Autofac.Builder;
 using Autofac;
-
+using ProjectExample;
+using ProjectExample.Service;
+using ProjectExample.Repository;
+using ProjectExample.Utility;
 
 namespace ProjectExample.Webapi
 {
@@ -25,7 +28,11 @@ namespace ProjectExample.Webapi
         });
 
         protected void Application_Start()
-        {
+        {            
+            const string connectionString = "Data Source=BORNA-PC\\SQLEXPRESS;" +
+                                            "Initial Catalog=MonoPraksa;" +
+                                            "Integrated Security=True;";
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
 		    var builder = new ContainerBuilder();
@@ -33,12 +40,10 @@ namespace ProjectExample.Webapi
                
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<Controllers.ExampleController>();
+            builder.RegisterModule(new ServiceModule());
+            builder.RegisterModule(new RepositoryModule());
+            builder.RegisterModule(new CrudWrapperModule{ConnectionString = connectionString});
 
-            builder.RegisterType<Service.Service>().As<Service.Common.IService>();
-            builder.RegisterType<Repository.Repository>().As<Repository.Common.IRepository>();
-            builder.RegisterType<Utility.CrudWrapper>().As<Utility.Common.ICrudWrapper>();
-            
             Container = builder.Build();  
 
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(Container);

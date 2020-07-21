@@ -34,3 +34,6 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\De
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ProjectExample.Model.dll
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ProjectExample.Model.Common.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\ProjectExample.Model.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\Autofac.Integration.Web.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\Autofac.Integration.Web.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ExampleProject.Utility\bin\Debug\Autofac.Integration.Web.xml

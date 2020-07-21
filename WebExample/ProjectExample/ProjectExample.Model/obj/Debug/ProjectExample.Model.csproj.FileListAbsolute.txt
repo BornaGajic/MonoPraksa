@@ -7,3 +7,17 @@ D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\obj\Debu
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\ProjectExample.Model.Common.dll
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\ProjectExample.Model.Common.pdb
 D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\obj\Debug\ProjectExample.Model.csproj.CopyComplete
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Autofac.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Autofac.Extensions.DependencyInjection.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Autofac.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Autofac.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Autofac.Extensions.DependencyInjection.pdb
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Autofac.Extensions.DependencyInjection.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\MonoPraksa\MonoPraksa\WebExample\ProjectExample\ProjectExample.Model\bin\Debug\System.Threading.Tasks.Extensions.xml

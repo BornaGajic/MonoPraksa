@@ -10,17 +10,17 @@ using System.Data;
 using System.Data.SqlClient;
 using ProjectExample.Repository.Common;
 using ProjectExample.Utility;
+using ProjectExample.Utility.Common;
 using ProjectExample.Model;
 
 namespace ProjectExample.Repository
 {
     public class Repository : IRepository
     {
-        private readonly CrudWrapper wrapper = new CrudWrapper(connectionString);
+        private readonly ICrudWrapper wrapper;
 
-        public const string connectionString = "Data Source=BORNA-PC\\SQLEXPRESS;" +
-                                            "Initial Catalog=MonoPraksa;" +
-                                            "Integrated Security=True;";
+        public Repository (ICrudWrapper wrapper) => this.wrapper = wrapper;
+
         public async Task<List<Person>> GetPersonList () 
         { 
             var query = "SELECT * FROM dbo.Person";

@@ -8,7 +8,6 @@ namespace ProjectExample.Utility.Common
 {
 	public interface ICrudWrapper
 	{
-		string connectionString { get; }
 		Task<List<List<object>>> ExecuteQuery (string query, Dictionary<string, object> parameters = null);
 		Task<bool> ExeNonQuery (string query, Dictionary<string, object> parameters);
 	}
