@@ -43,5 +43,7 @@ WebApi:
 * Autofac
 ## 7th day
 * DI Modules
+## 8th - 
+* MathosForum backend part
 
 *Company: https://mono.software/*
