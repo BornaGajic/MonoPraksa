@@ -43,7 +43,7 @@ WebApi:
 * Autofac
 ## 7th day
 * DI Modules
-## 8th - 
-* MathosForum backend part
+## 8th - end
+* MathosForum: https://github.com/jelenatufekovic/Praksa2020-g03-01
 
-*Company: https://mono.software/*
+* Company: https://mono.software/*
